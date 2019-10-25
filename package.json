@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/subscribe.js",
   "scripts": {
-    "start": "node node src/subscribe.js",
+    "start": "node src/subscribe.js",
     "dev": "nodemon src/subscribe.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
