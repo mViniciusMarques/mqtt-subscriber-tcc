@@ -10,7 +10,7 @@ const UMA_HORA = 3600;
 const UM_DIA = 86400;
 
 const con = mqtt.connect("mqtt://soldier.cloudmqtt.com",
-                {clientId:"CASA099",
+                {clientId:"========= HEROKU ============",
                     username: 'bvqnjxaz', 
                     password: 'mRCgh4BPQqGw', 
                     port: 16418});
@@ -75,7 +75,7 @@ const con = mqtt.connect("mqtt://soldier.cloudmqtt.com",
                 });
             }, CINCO_MINUTOS);
             
-            setInterval(() => {
+           // setInterval(() => {
                 con.subscribe('Remo/Check');
                 con.on('message', function (topic, message) {
                     console.log(topic)
@@ -86,6 +86,6 @@ const con = mqtt.connect("mqtt://soldier.cloudmqtt.com",
                         "data": enc.decode(message)
                     });
                 });
-            }, CINCO_MINUTOS);
+           // }, CINCO_MINUTOS);
             
     
