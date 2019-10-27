@@ -8,6 +8,18 @@ const QUINZE_MINUTOS = 900;
 const TRINTA_MINUTOS = 1800;
 const UMA_HORA = 3600;
 const UM_DIA = 86400;
+const topic_list=["Remo/Gas'",
+                  "Remo/Temperature",
+                  "Remo/Humity",
+                  "Remo/SoilHumity",
+                  'Remo/Check',
+                  'FRemo/Temperature',
+                  'FRemo/Vibration',
+                  'FRemo/SoilHumity',
+                  'FRemo/WaterDetector',
+                  'FRemo/AirPresure',
+                  'FRemo/GasConcentration'
+                ];
 
 const con = mqtt.connect("mqtt://soldier.cloudmqtt.com",
                 {clientId:"========= HEROKU ============",
@@ -21,71 +33,71 @@ const con = mqtt.connect("mqtt://soldier.cloudmqtt.com",
             if(!con.connected) {
                 con.reconnect();
             }    
-    
-            setInterval(() => {
-                con.subscribe('Remo/Gas')
-                con.on('message', function (topic, message) {
-                    console.log(topic)
-                    console.log(enc.decode(message))
-    
-                    MqttDataModel.create({
-                        "topic": topic,
-                        "data": enc.decode(message)
-                    });
-                });
-            }, DEZ_MINUTOS);
-           
-            setInterval(() => {
-                con.subscribe('Remo/Temperature')
-                con.on('message', function (topic, message) {
-                    console.log(topic)
-                    console.log(enc.decode(message))
-
-                    MqttDataModel.create({
-                        "topic": topic,
-                        "data": enc.decode(message)
-                    });
-                });
-            }, DEZ_MINUTOS);
             
-
-            setInterval(() => {
-                con.subscribe('Remo/Humity')
-                con.on('message', function (topic, message) {
-                    console.log(topic);
-                    console.log(enc.decode(message));
-
-                    MqttDataModel.create({
-                        "topic": topic,
-                        "data": enc.decode(message)
-                    });
-                });
-            }, CINCO_MINUTOS);
-
-            setInterval(() => {
-                con.subscribe('Remo/SoilHumity')
-                con.on('message', function (topic, message) {
-                    console.log(topic);
-                    console.log(enc.decode(message));
-
-                    MqttDataModel.create({
-                        "topic": topic,
-                        "data": enc.decode(message)
-                    });
-                });
-            }, CINCO_MINUTOS);
-            
-           // setInterval(() => {
-                con.subscribe('Remo/Check');
+                con.subscribe(topic_list).setMaxListeners(1)
                 con.on('message', function (topic, message) {
                     console.log(topic)
                     console.log(enc.decode(message))
-
+    
                     MqttDataModel.create({
                         "topic": topic,
                         "data": enc.decode(message)
                     });
                 });
-           // }, CINCO_MINUTOS);
+            
+            //     con.subscribe('Remo/Temperature').setMaxListeners(1)
+            //     con.on('message', function (topic, message) {
+            //         console.log(topic)
+            //         console.log(enc.decode(message))
+
+            //         MqttDataModel.create({
+            //             "topic": topic,
+            //             "data": enc.decode(message)
+            //         });
+            //     });
+            
+            //     con.subscribe('Remo/Humity').setMaxListeners(1)
+            //     con.on('message', function (topic, message) {
+            //         console.log(topic);
+            //         console.log(enc.decode(message));
+
+            //         MqttDataModel.create({
+            //             "topic": topic,
+            //             "data": enc.decode(message)
+            //         });
+            //     });
+
+            //     con.subscribe('Remo/SoilHumity').setMaxListeners(1)
+            //     con.on('message', function (topic, message) {
+            //         console.log(topic);
+            //         console.log(enc.decode(message));
+
+            //         MqttDataModel.create({
+            //             "topic": topic,
+            //             "data": enc.decode(message)
+            //         });
+            //     });
+            
+            //     con.subscribe('Remo/Check').setMaxListeners(1);
+            //     con.on('message', function (topic, message) {
+            //         console.log(topic)
+            //         console.log(enc.decode(message))
+
+            //         MqttDataModel.create({
+            //             "topic": topic,
+            //             "data": enc.decode(message)
+            //         });
+            //     });
+
+            // con.subscribe(`FRemo/Temperature`);
+            // con.on('message', function (topic, message) {
+            //     console.log(topic)
+            //     console.log(enc.decode(message))
+
+            //     MqttDataModel.create({
+            //         "topic": topic,
+            //         "data": enc.decode(message)
+            //     });
+            // });
             
     
