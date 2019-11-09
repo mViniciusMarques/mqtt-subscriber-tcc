@@ -19,14 +19,12 @@ const topic_list=["Remo/Gas'",
                   'FRemo/WaterDetector',
                   'FRemo/AirPresure',
                   'FRemo/GasConcentration',
-                  // Cain list
                   'Cain/FHumity',
                   'Cain/FTemperature',
                   'Cain/FAirPressure',
                   'Cain/FGasConcetration',
                   'Cain/FSoilHumity',
                   'Cain/FWater',
-                  'Cain/FSoilHumity'
                 ];
 
 const con = mqtt.connect("mqtt://soldier.cloudmqtt.com",
@@ -42,7 +40,8 @@ const con = mqtt.connect("mqtt://soldier.cloudmqtt.com",
                 con.reconnect();
             }    
             
-                con.subscribe(topic_list).setMaxListeners(1)
+                con.subscribe(topic_list)
+                //.setMaxListeners(1)
                 con.on('message', function (topic, message) {
                     console.log(topic)
                     console.log(enc.decode(message))
