@@ -18,7 +18,15 @@ const topic_list=["Remo/Gas'",
                   'FRemo/SoilHumity',
                   'FRemo/WaterDetector',
                   'FRemo/AirPresure',
-                  'FRemo/GasConcentration'
+                  'FRemo/GasConcentration',
+                  // Cain list
+                  'Cain/FHumity',
+                  'Cain/FTemperature',
+                  'Cain/FAirPressure',
+                  'Cain/FGasConcetration',
+                  'Cain/FSoilHumity',
+                  'Cain/FWater',
+                  'Cain/FSoilHumity'
                 ];
 
 const con = mqtt.connect("mqtt://soldier.cloudmqtt.com",
@@ -45,59 +53,6 @@ const con = mqtt.connect("mqtt://soldier.cloudmqtt.com",
                     });
                 });
             
-            //     con.subscribe('Remo/Temperature').setMaxListeners(1)
-            //     con.on('message', function (topic, message) {
-            //         console.log(topic)
-            //         console.log(enc.decode(message))
 
-            //         MqttDataModel.create({
-            //             "topic": topic,
-            //             "data": enc.decode(message)
-            //         });
-            //     });
-            
-            //     con.subscribe('Remo/Humity').setMaxListeners(1)
-            //     con.on('message', function (topic, message) {
-            //         console.log(topic);
-            //         console.log(enc.decode(message));
-
-            //         MqttDataModel.create({
-            //             "topic": topic,
-            //             "data": enc.decode(message)
-            //         });
-            //     });
-
-            //     con.subscribe('Remo/SoilHumity').setMaxListeners(1)
-            //     con.on('message', function (topic, message) {
-            //         console.log(topic);
-            //         console.log(enc.decode(message));
-
-            //         MqttDataModel.create({
-            //             "topic": topic,
-            //             "data": enc.decode(message)
-            //         });
-            //     });
-            
-            //     con.subscribe('Remo/Check').setMaxListeners(1);
-            //     con.on('message', function (topic, message) {
-            //         console.log(topic)
-            //         console.log(enc.decode(message))
-
-            //         MqttDataModel.create({
-            //             "topic": topic,
-            //             "data": enc.decode(message)
-            //         });
-            //     });
-
-            // con.subscribe(`FRemo/Temperature`);
-            // con.on('message', function (topic, message) {
-            //     console.log(topic)
-            //     console.log(enc.decode(message))
-
-            //     MqttDataModel.create({
-            //         "topic": topic,
-            //         "data": enc.decode(message)
-            //     });
-            // });
-            
+ 
     
